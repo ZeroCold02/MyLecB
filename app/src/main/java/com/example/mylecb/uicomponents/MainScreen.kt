@@ -14,7 +14,7 @@ import com.example.week03.lab.model.TodoStatus
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    val todoList = remember {
+    var todoList = remember {
 //        mutableStateListOf<Item>() 이렇게하면 빈 리스트를 생성하는거고
         TodoItemFactory.makeTodoList() //리스트 만들어둔거 받아오는거
     }
@@ -33,7 +33,19 @@ fun MainScreen(modifier: Modifier = Modifier) {
             todoList
         }
 
-        TodoList(filteredList)
+//        TodoList(filteredList)
+
+        TodoList(
+            todoList = filteredList,
+            onItemCheckedChange = { updatedItem ->
+                val index = todoList.indexOfFirst { it.content == updatedItem.content }
+                if (index != -1) {
+                    todoList[index] = updatedItem
+                }
+            }
+
+        )
+
         Spacer(modifier = Modifier.weight(1f))
         TodoItemInput(todoList)
     }

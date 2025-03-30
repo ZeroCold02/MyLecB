@@ -18,7 +18,8 @@ import com.example.mylecb.model.TodoItemFactory
 import com.example.week03.lab.model.TodoStatus
 
 @Composable
-fun TodoList(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
+fun TodoList(todoList: MutableList<Item>, modifier: Modifier = Modifier
+        ,onItemCheckedChange: (Item) -> Unit) {
     val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
@@ -35,10 +36,16 @@ fun TodoList(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
                         //그래서 index로 리스트에 직접 접근한다는데.
 
                         status -> //TodoCheckBox 함수의 두번째 매개변수인 함수는 (Boolean)->Unit 이니까, 아무튼 status로 매개변수 이름 정한거 boolean 타입이라는거.
-                        todoList[index] = item.copy(
-                            status = if (status) TodoStatus.COMPLETED
-                                    else TodoStatus.PENDING
+//                        todoList[index] = item.copy(
+//                            status = if (status) TodoStatus.COMPLETED
+//                                    else TodoStatus.PENDING
+//                        )
+                        onItemCheckedChange(
+                            item.copy(
+                                status = if (status) TodoStatus.COMPLETED else TodoStatus.PENDING
+                            )
                         )
+
 
                         //근데 여기서 사용하는 todoList도 TodoList 컴포저블 함수의 매개변수인거잖아.
                         //이건 왜 된다는거임? 이해가 안감.
@@ -58,5 +65,5 @@ fun TodoList(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun TodoListPreview() {
-    TodoList(TodoItemFactory.makeTodoList())
+    TodoList(TodoItemFactory.makeTodoList()){}
 }
