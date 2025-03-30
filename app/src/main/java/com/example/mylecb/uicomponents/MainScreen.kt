@@ -1,6 +1,8 @@
 package com.example.mylecb.uicomponents
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -14,9 +16,10 @@ fun MainScreen(modifier: Modifier = Modifier) {
         TodoItemFactory.makeTodoList() //리스트 만들어둔거 받아오는거
     }
 
-    Column {
+    Column { // 또는 fillMaxHeight()) {
         TodoListTitle()
         TodoList(todoList)
+        Spacer(modifier = Modifier.weight(1f))
         TodoItemInput(todoList)
     }
 }
