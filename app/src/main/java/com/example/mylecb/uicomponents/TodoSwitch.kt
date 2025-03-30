@@ -2,6 +2,7 @@ package com.example.mylecb.uicomponents
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -20,10 +21,13 @@ fun TodoSwitch(isChecked: Boolean,
          horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ){
+        Spacer(modifier = Modifier.weight(1f))
         Text(text = "미완료 항목만 보기",
-            fontSize = 14.sp)
+            fontSize = 14.sp,
+            modifier = Modifier.padding(5.dp))
         Switch(checked = isChecked,
-            onCheckedChange = { checked -> onCheckedChange(checked) })
+            onCheckedChange = { checked -> onCheckedChange(checked) },
+            modifier = Modifier.padding(5.dp))
     }
 }
 

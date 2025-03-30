@@ -3,6 +3,7 @@ package com.example.mylecb.uicomponents
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -28,7 +29,7 @@ fun TodoItemInput(todoList:MutableList<Item>, modifier: Modifier = Modifier) {
     //by를 사용해서 remeber state를 선언할때는 getValue와 setValue가 import 되어야함. Alt+Enter로 쉽게 가능
 
     //WR 하면 Row 만들어짐
-    Row(modifier = Modifier.fillMaxWidth()) { //가로로 꽉 차게 만들려고 fillMaxWidth 속성 부여함.
+    Row(modifier = Modifier.fillMaxWidth().padding(10.dp)) { //가로로 꽉 차게 만들려고 fillMaxWidth 속성 부여함.
         TextField(value = textfieldState,
             onValueChange = { content ->
                 textfieldState = content
