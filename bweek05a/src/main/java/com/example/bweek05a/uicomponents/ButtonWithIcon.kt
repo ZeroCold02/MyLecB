@@ -8,6 +8,7 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -17,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun ButtonWithIcon(likes: Int, onClick: () -> Unit) {
     Button(onClick = { onClick() }) {
-        Icon(
+        Icon( //Icon의 색상을 바꾸고 싶으면 color가 아니라 tint를 바꾸면 됨.
             Icons.Default.Favorite,
             contentDescription = null,
             tint = if (likes > 0) Color.Red else LocalContentColor.current
@@ -32,6 +33,6 @@ fun ButtonWithIcon(likes: Int, onClick: () -> Unit) {
 @Preview
 @Composable
 private fun ButtonWithIconPreview() {
-    var likes by remember{ mutableStateOf(0) }
+    var likes by remember{ mutableIntStateOf(0) }
     ButtonWithIcon(likes = likes, {likes++})
 }
