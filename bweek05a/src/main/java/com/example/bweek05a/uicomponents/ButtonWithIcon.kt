@@ -1,4 +1,4 @@
-package com.example.week04.uicomponents
+package com.example.bweek05a.uicomponents
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite

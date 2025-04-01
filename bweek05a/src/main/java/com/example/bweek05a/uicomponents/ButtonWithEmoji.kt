@@ -1,4 +1,4 @@
-package com.example.week04.uicomponents
+package com.example.bweek05a.uicomponents
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -33,7 +33,7 @@ fun ButtonWithEmoji(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = { onClickLikes() }) {
-                Text(text = "?ëç", fontSize = 32.sp)
+                Text(text = "‚ù§Ô∏è", fontSize = 32.sp)
             }
             Text(text = likes.toString(), fontSize = 16.sp)
         }
@@ -43,7 +43,7 @@ fun ButtonWithEmoji(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = { onClickDisLikes() }) {
-                Text(text = "?ëé", fontSize = 32.sp)
+                Text(text = "üíô", fontSize = 32.sp)
             }
             Text(text = dislikes.toString(), fontSize = 16.sp)
         }
