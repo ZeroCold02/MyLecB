@@ -22,7 +22,7 @@ import com.example.bweek05a.R
 @Composable
 private fun RasterImageExample1() {
     Image(
-        painter = painterResource(id = R.drawable.img1),
+        painter = painterResource(id = R.drawable.img2),
         contentDescription = null
     )
 }
@@ -30,7 +30,7 @@ private fun RasterImageExample1() {
 @Preview
 @Composable
 private fun RasterImageExample2() {
-    val imageBitmap = ImageBitmap.imageResource(R.drawable.img1)
+    val imageBitmap = ImageBitmap.imageResource(R.drawable.img2)
     Image(
         bitmap = imageBitmap,
         contentDescription = null
@@ -70,7 +70,7 @@ private fun AsyncImageExample() {
 @Composable
 private fun AsyncImageExample2() {
     AsyncImage(
-        model = R.drawable.img1,
+        model = R.drawable.img2,
         contentDescription = null
     )
 }
