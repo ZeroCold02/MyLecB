@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun ImageWithButton(modifier: Modifier = Modifier) {
+fun ImageWithButton(image:Int, modifier: Modifier = Modifier,
+                    button:@Composable ()->Unit
+) {
     
 }
