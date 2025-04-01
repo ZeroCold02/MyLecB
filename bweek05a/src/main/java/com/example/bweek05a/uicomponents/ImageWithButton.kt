@@ -27,3 +27,23 @@ fun ImageWithButton(
         button()
     }
 }
+
+@Composable
+fun ImageWithButton(
+    image: String, modifier: Modifier = Modifier,
+    button: @Composable () -> Unit
+) {
+    Column {
+        AsyncImage(
+            model = image,
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(200.dp)
+                .clip(CircleShape)
+        )
+        button()
+    }
+
+
+}
