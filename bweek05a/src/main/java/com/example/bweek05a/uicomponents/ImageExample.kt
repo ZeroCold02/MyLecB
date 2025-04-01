@@ -1,4 +1,4 @@
-package com.example.week04.uicomponents
+package com.example.bweek05a.uicomponents
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -16,13 +16,13 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.example.week04.R
+import com.example.bweek05a.R
 
 @Preview
 @Composable
 private fun RasterImageExample1() {
     Image(
-        painter = painterResource(id = R.drawable.image),
+        painter = painterResource(id = R.drawable.img1),
         contentDescription = null
     )
 }
@@ -30,7 +30,7 @@ private fun RasterImageExample1() {
 @Preview
 @Composable
 private fun RasterImageExample2() {
-    val imageBitmap = ImageBitmap.imageResource(R.drawable.image)
+    val imageBitmap = ImageBitmap.imageResource(R.drawable.img1)
     Image(
         bitmap = imageBitmap,
         contentDescription = null
@@ -41,7 +41,7 @@ private fun RasterImageExample2() {
 @Composable
 private fun VectorImageExample1() {
     Image(
-        painter = painterResource(id = R.drawable.baseline_shopping_cart_24),
+        painter = painterResource(id = R.drawable.baseline_add_shopping_cart_24),
         contentDescription = null
     )
 }
@@ -49,7 +49,7 @@ private fun VectorImageExample1() {
 @Preview
 @Composable
 private fun VectorImageExample2() {
-    val vectorImage = ImageVector.vectorResource(id = R.drawable.baseline_shopping_cart_24)
+    val vectorImage = ImageVector.vectorResource(id = R.drawable.baseline_add_shopping_cart_24)
     Image(
         imageVector = vectorImage,
         contentDescription = null
@@ -70,7 +70,7 @@ private fun AsyncImageExample() {
 @Composable
 private fun AsyncImageExample2() {
     AsyncImage(
-        model = R.drawable.image,
+        model = R.drawable.img1,
         contentDescription = null
     )
 }

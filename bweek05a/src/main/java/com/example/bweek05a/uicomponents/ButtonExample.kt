@@ -1,4 +1,4 @@
-package com.example.week04.uicomponents
+package com.example.bweek05a.uicomponents
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
