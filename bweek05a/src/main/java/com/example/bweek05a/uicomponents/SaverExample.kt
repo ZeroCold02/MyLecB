@@ -94,6 +94,12 @@ fun CityScreen4(modifier: Modifier = Modifier) {
 
 @Composable
 fun CityScreen5(modifier: Modifier = Modifier) {
+    //list를 state로 갖는 예제임.
+    //mutableStateList라는 타입은 없고, 그걸로 만드는건 SnapshotStateList 라는듯?
+    //리스트 안에 리스트가 들어가있는 구조잖음. 이대로 저장할 수는 없어서 펼쳐서 저장해야함.
+    //flatMap이 리스트를 펼치는 기능이라고 함.
+    //쨌든 중요한건뭐다? 리스트를 저장하고 싶으면 펼쳐서 저장해야한다.
+
     val cityListSaver = listSaver<SnapshotStateList<City2>, Any>(
         save = { list ->
             list.flatMap { city ->
@@ -125,6 +131,10 @@ fun CityScreen5(modifier: Modifier = Modifier) {
 
 @Composable
 fun CityScreen6(modifier: Modifier = Modifier) {
+    //Map 구조로 저장할건데, 이름으로 이름을 저장할거임.
+    //근데 이름 따로 컨트리 따로 저장한다는듯?
+    //복원할때는 다시 list로 변환해서 받아주고, 하나씩 묶는 작업을 해줘야함. 그게 zip임.
+    //이렇게 복잡해지기 떄문에 이렇게는 잘 안쓰고 다음에 배울 View Model이라는걸 사용할거임.
     val cityMapSaver = mapSaver(
         save = { list ->
             mapOf(
