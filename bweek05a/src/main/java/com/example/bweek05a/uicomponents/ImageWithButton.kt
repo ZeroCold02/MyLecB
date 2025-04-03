@@ -66,7 +66,7 @@ private fun ImageWithButtonPreview() {
     var likes by remember { mutableStateOf(0) }
     var dislikes by remember { mutableStateOf(0) }
 
-    ImageWithButton(image = R.drawable.img1) {
+    ImageWithButton(image = R.drawable.img2) {
         ButtonWithEmoji(likes, dislikes, { likes++ }, { dislikes++ })
     }
 
