@@ -11,7 +11,7 @@ import com.example.bweek05a.model.ImageUri
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    val img1 = rememberSaveable {
+    val img1 = rememberSaveable(stateSaver = ImageData.imageSaver) {
         mutableStateOf(
             ImageData(
                 imageUri = ImageUri.ResImage(R.drawable.img1),
