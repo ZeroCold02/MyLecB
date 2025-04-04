@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "MyLecB"
 include(":app")
 include(":bweek05a")
+include(":assignment02")
