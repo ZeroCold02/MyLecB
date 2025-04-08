@@ -12,8 +12,30 @@ fun ImageList(
 ) {
     imageList.forEachIndexed { index, item ->
         when (item.buttonType) {
-            ButtonType.ICON -> {}
-            ButtonType.BADGE -> {}
+            ButtonType.ICON -> {
+
+                ImageWithButton(image = item.imageUri) {
+                    ButtonWithIcon(
+                        likes = item.likes,
+                        onClick = {
+                            imageList[index] = item.copy(likes = item.likes + 1)
+                        }
+                    )
+                }
+            }
+
+            ButtonType.BADGE -> {
+                ImageWithButton(image = item.imageUri) {
+                    ButtonWithBadge(
+                        likes = item.likes,
+                        onClick = {
+                            imageList[index] = item.copy(likes = item.likes + 1)
+                        }
+                    )
+                }
+
+            }
+
             ButtonType.EMOJI -> {
                 ImageWithButton(image = item.imageUri) {
                     ButtonWithEmoji(
