@@ -55,7 +55,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 dislikes = img1.dislikes,
 //                onClickLikes = { img1.likes++ }, //이런식으로 작성하면 state 변화가 일어나지 않는다!! -> copy 해서 넣어야함!
                 onClickLikes = {
-                    img1 = img1.copy(likes = img1.likes++)
+                    img1 = img1.copy(likes = img1.likes+1)
                 },
                 onClickDisLikes = {}
             )
