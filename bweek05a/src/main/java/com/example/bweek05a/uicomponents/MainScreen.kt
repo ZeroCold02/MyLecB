@@ -62,6 +62,24 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 }
             )
         }
+
+        ImageWithButton(image = img2.imageUri) {
+            ButtonWithBadge(
+                likes = img2.likes,
+                onClick = {
+                    img2 = img2.copy(likes = img2.likes+1)
+                }
+            )
+        }
+
+        ImageWithButton(image = img3.imageUri) {
+            ButtonWithIcon(
+                likes = img3.likes,
+                onClick = {
+                    img3 = img3.copy(likes = img3.likes+1)
+                }
+            )
+        }
     }
 
 }
