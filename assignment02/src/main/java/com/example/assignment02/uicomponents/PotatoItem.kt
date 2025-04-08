@@ -10,12 +10,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PotatoItem(isChecked:Boolean, label:String, modifier: Modifier = Modifier) {
+fun PotatoItem(
+    isChecked: Boolean, label: String, modifier: Modifier = Modifier,
+    onCheckedChange: (Boolean) -> Unit
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(horizontal = 4.dp)
     ) {
-        PotatoCheckBox(isChecked) { }
+        PotatoCheckBox(isChecked = isChecked, onCheckedChange = onCheckedChange)
         Text(text = label)
     }
 }
@@ -23,5 +26,5 @@ fun PotatoItem(isChecked:Boolean, label:String, modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun PotatoItemPrev() {
-    PotatoItem(true,"body")
+    PotatoItem(true, "body") {}
 }
