@@ -12,8 +12,6 @@ import com.example.bweek05a.model.ImageUri
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    
-
     val img1 by rememberSaveable(stateSaver = ImageData.imageSaver) {
         mutableStateOf(
             ImageData(
@@ -21,6 +19,24 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 buttonType = ButtonType.EMOJI,
                 likes = 50,
                 dislikes = 10
+            )
+        )
+    }
+    val img2 by rememberSaveable(stateSaver = ImageData.imageSaver) {
+        mutableStateOf(
+            ImageData(
+                imageUri = ImageUri.ResImage(R.drawable.img2),
+                buttonType = ButtonType.BADGE,
+                likes = 50
+            )
+        )
+    }
+    val img3 by rememberSaveable(stateSaver = ImageData.imageSaver) {
+        mutableStateOf(
+            ImageData(
+                imageUri = ImageUri.ResImage(R.drawable.img3),
+                buttonType = ButtonType.ICON,
+                likes = 50
             )
         )
     }
