@@ -57,7 +57,9 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 onClickLikes = {
                     img1 = img1.copy(likes = img1.likes+1)
                 },
-                onClickDisLikes = {}
+                onClickDisLikes = {
+                    img1 = img1.copy(dislikes = img1.dislikes+1)
+                }
             )
         }
     }
