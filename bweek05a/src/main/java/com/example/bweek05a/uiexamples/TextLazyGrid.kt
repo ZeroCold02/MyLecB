@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 fun TextLazyGrid(dataList: MutableList<String>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         //columns = GridCells.Adaptive(minSize = 100.dp),
-        columns = GridCells.Fixed(2),
+        columns = GridCells.Fixed(3),
         modifier = modifier,
         contentPadding = PaddingValues(10.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp),

@@ -30,7 +30,7 @@ fun TextLazyColumn(dataList: MutableList<String>, modifier: Modifier = Modifier)
 @Preview
 @Composable
 private fun TextLazyColumnBasicPreview() {
-    val dataList = (1..10).map { it.toString() }.toMutableList()
+    val dataList = (1..20).map { it.toString() }.toMutableList()
     TextLazyColumn(dataList = dataList, modifier = Modifier.fillMaxSize())
 }
 
