@@ -1,38 +1,48 @@
 package com.example.assignment02.uicomponents
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.assignment02.R
 
 @Composable
-fun PartCheckbox(label: String,
-                 checked: Boolean,
-                 modifier: Modifier = Modifier,
-                 onCheckedChange: (Boolean) -> Unit) {
-    Row(verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(4.dp)) {
+fun PartCheckbox(
+    label: String,
+    checked: Boolean,
+    modifier: Modifier = Modifier,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier.padding(4.dp)
+    ) {
         Checkbox(
             checked = checked,
             onCheckedChange = onCheckedChange
@@ -41,32 +51,26 @@ fun PartCheckbox(label: String,
     }
 }
 
-
-
 @Composable
-fun CheckboxGrid(partStates: MutableMap<String, Boolean>,
-    modifier: Modifier = Modifier) {
-    val parts = partStates.keys.toList()
-
+fun CheckboxGrid(
+    partNames: List<String>,
+    checkedStates: MutableList<Boolean>,
+    modifier: Modifier = Modifier
+) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = modifier
-//            .fillMaxWidth()
             .fillMaxSize()
-//            .height(300.dp)
             .padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
-        items(parts.size) {
-            index ->
-            val part = parts[index]
+        items(partNames.size) { index ->
             PartCheckbox(
-                label = part,
-                checked = partStates[part] == true,
-                onCheckedChange = {
-                    checked ->
-                    partStates[part] = checked
+                label = partNames[index],
+                checked = checkedStates[index],
+                onCheckedChange = { checked ->
+                    checkedStates[index] = checked
                 }
             )
         }
@@ -75,20 +79,10 @@ fun CheckboxGrid(partStates: MutableMap<String, Boolean>,
 
 @Composable
 fun NewMainScreen(modifier: Modifier = Modifier) {
-
     val partNames = listOf(
         "arms", "ears", "eyebrows", "eyes", "glasses",
         "hat", "mouth", "mustache", "nose", "shoes"
     )
-
-    val partStates = remember(
-    ) {
-        mutableStateMapOf<String, Boolean>().apply {
-            partNames.forEach{
-                this[it] = true
-            }
-        }
-    }
 
     val checkedStates = rememberSaveable(
         saver = listSaver(
@@ -98,7 +92,6 @@ fun NewMainScreen(modifier: Modifier = Modifier) {
     ) {
         mutableStateListOf(*Array(partNames.size) { true })
     }
-
 
     val potatoParts = listOf(
         "arms" to R.drawable.arms,
@@ -113,39 +106,79 @@ fun NewMainScreen(modifier: Modifier = Modifier) {
         "shoes" to R.drawable.shoes
     )
 
-    Image(painter = painterResource(id = R.drawable.body),
-        contentDescription = "",
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        contentScale = ContentScale.FillWidth)
+    val orientation = LocalConfiguration.current.orientation
 
-    Column {
-        Box{
-            // 몸통은 항상 표시
-            Image(painter = painterResource(id = R.drawable.body),
-                contentDescription = "body",
+    if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            Text(text = "202111267", fontSize = 50.sp)
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                contentScale = ContentScale.FillWidth)
+                    .aspectRatio(1f)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.body),
+                    contentDescription = "body",
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Fit
+                )
 
-            // 나머지 부위는 상태에 따라 표시
-            potatoParts.forEach { (name, resId) ->
-                if (partStates[name] == true) {
-                    Image(painter = painterResource(id = resId),
-                        contentDescription = name,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        contentScale = ContentScale.FillWidth)
+                potatoParts.forEachIndexed { index, (name, resId) ->
+                    if (checkedStates[index]) {
+                        Image(
+                            painter = painterResource(id = resId),
+                            contentDescription = name,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Fit
+                        )
+                    }
                 }
             }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            CheckboxGrid(partNames = partNames, checkedStates = checkedStates)
         }
+    } else {
+        Row(modifier = Modifier.fillMaxSize()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .aspectRatio(1f)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.body),
+                    contentDescription = "body",
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Fit
+                )
 
-        CheckboxGrid(partStates = partStates)
+                potatoParts.forEachIndexed { index, (name, resId) ->
+                    if (checkedStates[index]) {
+                        Image(
+                            painter = painterResource(id = resId),
+                            contentDescription = name,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Fit
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Column {
+                CheckboxGrid(
+                    partNames = partNames,
+                    checkedStates = checkedStates,
+                    modifier = Modifier
+                        .weight(1f)
+                )
+
+                Text(text = "202111267", fontSize = 50.sp)
+            }
+
+
+        }
     }
-
-
 }
-
