@@ -2,7 +2,6 @@ package com.example.assignment02.uicomponents
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,18 +11,13 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.toMutableStateList
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
@@ -32,50 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.assignment02.R
 
-@Composable
-fun PartCheckbox(
-    label: String,
-    checked: Boolean,
-    modifier: Modifier = Modifier,
-    onCheckedChange: (Boolean) -> Unit
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.padding(4.dp)
-    ) {
-        Checkbox(
-            checked = checked,
-            onCheckedChange = onCheckedChange
-        )
-        Text(text = label)
-    }
-}
-
-@Composable
-fun CheckboxGrid(
-    partNames: List<String>,
-    checkedStates: MutableList<Boolean>,
-    modifier: Modifier = Modifier
-) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        modifier = modifier
-            .fillMaxSize()
-            .padding(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-    ) {
-        items(partNames.size) { index ->
-            PartCheckbox(
-                label = partNames[index],
-                checked = checkedStates[index],
-                onCheckedChange = { checked ->
-                    checkedStates[index] = checked
-                }
-            )
-        }
-    }
-}
 
 @Composable
 fun NewMainScreen(modifier: Modifier = Modifier) {
@@ -110,7 +60,7 @@ fun NewMainScreen(modifier: Modifier = Modifier) {
 
     if (orientation == Configuration.ORIENTATION_PORTRAIT) {
         Column(modifier = Modifier.fillMaxSize()) {
-            Text(text = "202111267", fontSize = 50.sp)
+            Text(text = "202111267 김찬영", fontSize = 40.sp)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -175,7 +125,7 @@ fun NewMainScreen(modifier: Modifier = Modifier) {
                         .weight(1f)
                 )
 
-                Text(text = "202111267", fontSize = 50.sp)
+                Text(text = "202111267 김찬영", fontSize = 40.sp)
             }
 
 

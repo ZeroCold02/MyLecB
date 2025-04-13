@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.assignment02.ui.theme.MyLecBTheme
-import com.example.assignment02.uicomponents.MainScreen
 import com.example.assignment02.uicomponents.NewMainScreen
 
 class MainActivity : ComponentActivity() {
