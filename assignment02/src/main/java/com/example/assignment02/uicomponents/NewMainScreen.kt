@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.snapshots.SnapshotStateMap
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -38,8 +37,10 @@ fun PartCheckbox(label: String,
     }
 }
 
+
+
 @Composable
-fun CheckboxGrid(partStates: SnapshotStateMap<String, Boolean>,
+fun CheckboxGrid(partStates: MutableMap<String, Boolean>,
     modifier: Modifier = Modifier) {
     val parts = partStates.keys.toList()
 
@@ -76,14 +77,15 @@ fun NewMainScreen(modifier: Modifier = Modifier) {
         "hat", "mouth", "mustache", "nose", "shoes"
     )
 
-    val partStates = remember {
+    val partStates = remember(
+    ) {
         mutableStateMapOf<String, Boolean>().apply {
             partNames.forEach{
                 this[it] = true
             }
         }
     }
-
+    
     val potatoParts = listOf(
         "arms" to R.drawable.arms,
         "ears" to R.drawable.ears,
@@ -132,3 +134,4 @@ fun NewMainScreen(modifier: Modifier = Modifier) {
 
 
 }
+
