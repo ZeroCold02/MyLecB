@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -20,21 +21,7 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     imageViewModel: ImageViewModel = viewModel()
 ) {
-//    val imageList = imageViewModel.imageList
-//
-//    val orientation = LocalConfiguration.current.orientation
-//
-//    if(orientation == Configuration.ORIENTATION_PORTRAIT) {
-//        Column(modifier = Modifier.fillMaxWidth(),
-//            horizontalAlignment = Alignment.CenterHorizontally) {
-//            ImageList(imageList)
-//        }
-//    } else {
-//        Row(modifier = Modifier.fillMaxHeight(),
-//            verticalAlignment = Alignment.CenterVertically) {
-//            ImageList(imageList)
-//        }
-//    }
+
     val imageList = imageViewModel.imageList
     val orientation = LocalConfiguration.current.orientation
     val scrollState = rememberScrollState()
@@ -45,6 +32,15 @@ fun MainScreen(
         ) {
             ImageList(imageList = imageList)
         }
+//        LazyColumn(
+//            modifier = modifier,
+//            horizontalAlignment = Alignment.CenterHorizontally
+//        ) {
+//            items(imageList) { image ->
+//                ImageItem(image = image)
+//            }
+//        }
+
     }else{
         Row(modifier = Modifier.fillMaxHeight().horizontalScroll(scrollState),
             verticalAlignment = Alignment.CenterVertically){
