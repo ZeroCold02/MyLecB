@@ -1,4 +1,4 @@
-package com.example.week06.example01.uicomponents
+package com.example.bweek07a.example01.uicomponents
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Screen_A(onNavigate:()->Unit) {
+fun Screen_A(onNavigateC:()->Unit, onNavigateD:()->Unit) {
     Column(modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -24,9 +24,15 @@ fun Screen_A(onNavigate:()->Unit) {
         )
 
         Button(onClick = {
-            onNavigate()
+            onNavigateC()
         }){
             Text(text = "Go to Screen C")
+        }
+
+        Button(onClick = {
+            onNavigateD()
+        }) {
+            Text(text = "Go to Screen D")
         }
     }
 }
