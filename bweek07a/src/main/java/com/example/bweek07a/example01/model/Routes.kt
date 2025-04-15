@@ -1,4 +1,4 @@
-package com.example.week06.example01.model
+package com.example.bweek07a.example01.model
 
 sealed class Routes(val route: String) {
     object Home : Routes(route = "Home")

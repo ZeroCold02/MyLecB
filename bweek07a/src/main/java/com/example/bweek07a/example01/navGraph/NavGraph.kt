@@ -1,15 +1,15 @@
-package com.example.week06.example01.navGraph
+package com.example.bweek07a.example01.navGraph
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.week06.example01.model.Routes
-import com.example.week06.example01.uicomponents.HomeScreen
-import com.example.week06.example01.uicomponents.Screen_A
-import com.example.week06.example01.uicomponents.Screen_B
-import com.example.week06.example01.uicomponents.Screen_C
+import com.example.bweek07a.example01.model.Routes
+import com.example.bweek07a.example01.uicomponents.HomeScreen
+import com.example.bweek07a.example01.uicomponents.Screen_A
+import com.example.bweek07a.example01.uicomponents.Screen_B
+import com.example.bweek07a.example01.uicomponents.Screen_C
 
 @Composable
 fun NavGraph(
